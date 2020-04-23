@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="top">
+	<input type="text" bindconfirm="add" value="{{content}}"></input>
+</view>
+
+<view>
+	<text>未完成:{{num}}</text>
+	<view class="list" wx:for="{{list}}" wx:key="index" wx:if="{{!item.flag}}">
+		<checkbox-group>
+			<checkbox bindtap="change" data-ind="{{index}}" checked="{{item.flag}}"></checkbox>
+		</checkbox-group>
+		<text  wx:if="{{!item.show}}" bindtap="xian"  data-ind="{{index}}">{{item.title}}</text>
+		<input type="text" class="inp" wx:if="{{item.show}}" data-ind="{{index}}" value="{{item.title}}" bindblur="blur"></input>
+		<button size="mini" data-ind="{{index}}" bindtap="del">×</button>
+	</view>
+</view>
+
+<view>
+	<text>已完成:{{sum}}</text>
+	<view class="list" wx:for="{{list}}" wx:key="index" wx:if="{{item.flag}}">
+		<checkbox-group>
+			<checkbox bindtap="change" data-ind="{{index}}" checked="{{item.flag}}"></checkbox>
+		</checkbox-group>
+		<text  wx:if="{{!item.show}}" bindtap="xian"  data-ind="{{index}}">{{item.title}}</text>
+			<input type="text" class="inp" wx:if="{{item.show}}" data-ind="{{index}}" value="{{item.title}}" bindblur="blur"></input>
+		<button size="mini" data-ind="{{index}}" bindtap="del">×</button>
+	</view>
+</view>
